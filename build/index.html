@@ -10,6 +10,10 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha256-xWeRKjzyg6bep9D1AsHzUPEWHbWMzlRc84Z0aG+tyms= sha512-mGIRU0bcPaVjr7BceESkC37zD6sEccxE+RJyQABbbKNe83Y68+PyPM5nrE1zvbQZkSHDCJEtnAcodbhlq2/EkQ==" crossorigin="anonymous">
   <style>
+    main {
+      max-width: 400px;
+      margin: 0 auto;
+    }
     h1, h4 {
       text-align: center;
       padding: 20px;
@@ -20,29 +24,48 @@
       width: 300px;
       height: 300px;
       margin: 0 auto;
-      border-radius: 10px;
+      border-radius: 50%;
       line-height: 100%;
+    }
+    section:hover {
+      background-color: "#ff70ca";
     }
     section p {
       text-align: center;
+    }
+    .alert {
+      text-align: center;
+    }
+    #x,
+    #y,
+    #timer_id {
+      display: inline-block;
+      min-width: 2rem;
+    }
+    .display-4 {
+      display: block;
+      font-size: 2rem;
+      padding-top: 100px;
     }
   </style>
 
   <!--
   Run `npm run build` every time the contents of `input.js` is updated.
   -->
-  <script src="compiled.js"></script>
+  <script src="index.js"></script>
 </head>
 
 <body>
-  <main class="container">
+  <main>
     <h1>
       Controlling the sensitivity to events
     </h1>
 
-    <hr>
-
-    <h4>Controlled event</h4>
+    <div class="alert alert-info">
+      x: <span id="x">___</span>
+      y: <span id="y">___</span>
+      timer: <span id="timer">___</span>
+    </div>
 
     <section
       id="controlled"
@@ -58,13 +81,16 @@ var element = document.querySelector('#controlled');
 
 function onOverHandler() {
   console.log('onOverHandler was invoked')
+  document.querySelector('#controlled').style.backgroundColor = "#ff70ca";
 }
 
 function onOutHandler() {
   console.log('onOutHandler was invoked')
+  document.querySelector('#controlled').style.backgroundColor = "#caff70";
 }
 
-controlEvent(element, onOverHandler, onOutHandler);
+new eventSensitivityControl(element, onOverHandler, onOutHandler);
+// eventSensitivityControl(element, onOverHandler, onOutHandler);
 
 </script>
 </body>

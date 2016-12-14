@@ -1,19 +1,22 @@
 {
-  "name": "hover_intent",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "babel input.js -o compiled.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0"
-  },
-  "dependencies": {
-    "angular": "^1.6.0"
-  }
+    "name": "event_sensitivity_control",
+    "private": true,
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "babel src/index.js -o build/index.js",
+        "server": "cd ./build && lite-server && cd .."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "babel-preset-stage-0": "^6.16.0",
+        "babel-preset-stage-2": "^6.18.0",
+        "lite-server": "^2.2.2"
+    },
+    "dependencies": {}
 }
