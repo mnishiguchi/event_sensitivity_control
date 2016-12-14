@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<html
-  ng-app="app"
-  ng-controller="AppController as app">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -12,7 +10,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha256-xWeRKjzyg6bep9D1AsHzUPEWHbWMzlRc84Z0aG+tyms= sha512-mGIRU0bcPaVjr7BceESkC37zD6sEccxE+RJyQABbbKNe83Y68+PyPM5nrE1zvbQZkSHDCJEtnAcodbhlq2/EkQ==" crossorigin="anonymous">
   <style>
-    h1 {
+    h1, h4 {
       text-align: center;
       padding: 20px;
     }
@@ -30,7 +28,10 @@
     }
   </style>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular.min.js"></script>
+  <!--
+  Run `npm run build` every time the contents of `input.js` is updated.
+  -->
+  <script src="compiled.js"></script>
 </head>
 
 <body>
@@ -39,9 +40,12 @@
       Controlling the sensitivity to events
     </h1>
 
+    <hr>
+
+    <h4>Controlled event</h4>
+
     <section
-      respond-to-mouseenter
-      respond-to-mouseleave
+      id="controlled"
       class="display-4">
       <p>
         Move the mouse pointer on me!
@@ -50,74 +54,18 @@
   </main>
 
 <script>
-(function() {
+var element = document.querySelector('#controlled');
 
+function onOverHandler() {
+  console.log('onOverHandler was invoked')
+}
 
-  // ---
-  // Module declaraton
-  // ---
+function onOutHandler() {
+  console.log('onOutHandler was invoked')
+}
 
+controlEvent(element, onOverHandler, onOutHandler);
 
-  angular.module( "app", [] );
-
-
-  // ---
-  // Controllers
-  // ---
-
-
-  angular
-    .module( "app" )
-    .controller( "AppController", AppController );
-
-  AppController.$inject = [];
-
-  function AppController() {
-    this.pathname = window.location.pathname;
-  }
-
-
-  // ---
-  // Directives
-  // ---
-
-
-  /**
-   * Respond to mouseenter event.
-   */
-  angular
-    .module( "app" )
-    .directive( "respondToMouseenter", respondToMouseenter );
-
-  function respondToMouseenter() {
-    return link;
-
-    function link( scope, element ) {
-      element.bind( "mouseenter", function() {
-        element.children( ':first' ).html( "Welcome!" );
-        element.css( "background-color", "#ff70ca" );
-      })
-    }
-  }
-  /**
-   * Respond to mouseleave event.
-   */
-  angular
-    .module( "app" )
-    .directive( "respondToMouseleave", respondToMouseleave );
-
-  function respondToMouseleave() {
-    return link;
-
-    function link( scope, element ) {
-      element.bind( "mouseleave", function() {
-        element.children( ':first' ).html( "Good-bye!" );
-        element.css( "background-color", "#caff70" );
-      })
-    }
-  }
-
-})()
 </script>
 </body>
 </html>

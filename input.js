@@ -31,7 +31,7 @@ let timer = undefined;
  * @param  onOverHandler - a handler function for mouseover event
  * @param  onOutHandler  - a handler function for mouseout event
  */
-export default (el, onOverHandler, onOutHandler) => {
+function controlEvent(el, onOverHandler, onOutHandler) {
 
   let options = {
     sensitivity: 7,
@@ -76,10 +76,15 @@ export default (el, onOverHandler, onOutHandler) => {
   // ---
 
 
+  // `x => ${x}, y => ${y},  xMoveStart => ${xMoveStart}, yMoveStart => ${yMoveStart}`
+
   /**
    * @param  e - event that is triggered in setup methods.
    */
   function dispatchEnter(e) {
+
+    console.log(`dispatchEnter was called`)
+
     // Clean up old stuff.
     resetTimer();
     el.removeEventListener('mousemove', tracker, false);
@@ -98,6 +103,9 @@ export default (el, onOverHandler, onOutHandler) => {
    * @param  e - event that is triggered in remove methods.
    */
   function dispatchExit(e) {
+
+    console.log(`dispatchExit was called`)
+
     resetTimer();
     el.removeEventListener('mousemove', tracker, false);
 
@@ -115,6 +123,8 @@ export default (el, onOverHandler, onOutHandler) => {
    * at which the event occurred.
    */
   function tracker(e) {
+    console.log(`tracker was called`)
+
     x = e.clientX;
     y = e.clientY;
   }
@@ -129,6 +139,8 @@ export default (el, onOverHandler, onOutHandler) => {
   * ???
   */
   function setDelayTimer() {
+    console.log(`setDelayTimer was called`)
+
     timer = setTimeout(() => {
       delay(el, e);
     }, options.timeout);
@@ -141,6 +153,8 @@ export default (el, onOverHandler, onOutHandler) => {
   * ??? Compare for what???
   */
   function setCompareTimer() {
+    console.log(`setCompareTimer was called`)
+
     timer = setTimeout(() => {
       compare(el, e);
     }, options.interval);
@@ -154,11 +168,12 @@ export default (el, onOverHandler, onOutHandler) => {
   * NOTE: timer will be undefined.
   */
   function resetTimer() {
+    console.log(`resetTimer was called`)
+
     if (timer) timer = clearTimeout(timer);
 
     return timer;
   }
-
 
 
   // ---
@@ -167,6 +182,8 @@ export default (el, onOverHandler, onOutHandler) => {
 
 
   function setMoveStartPosition(x, y) {
+    console.log(`setMoveStartPosition was called`)
+
     xMoveStart = x;
     yMoveStart = y;
   }
@@ -178,9 +195,11 @@ export default (el, onOverHandler, onOutHandler) => {
    * @return {[type]}    [description]
    */
   function delay(el, e) {
+    console.log(`delay was called`)
+
     resetTimer();
     state = BEFORE_ENGAGED;
-    
+
     return onOutHandler.call(el, e);
   }
 
@@ -191,6 +210,8 @@ export default (el, onOverHandler, onOutHandler) => {
    * @return {[type]}    [description]
    */
   function compare(el, e) {
+    console.log(`compare was called`)
+
     resetTimer();
 
     // FIXME
