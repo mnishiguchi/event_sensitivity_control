@@ -15,7 +15,7 @@ class eventSensitivityControl {
    * @param  onOutHandler  - a handler for mouseout event
    * @param  options
    */
-  constructor(element, onOverHandler, onOutHandler, options=defaultOptions) {
+  constructor(element, onOverHandler, onOutHandler, options) {
     console.log("constructor");
     console.log(this.element);
 
@@ -23,7 +23,7 @@ class eventSensitivityControl {
     this.element       = element;
     this.onOverHandler = onOverHandler;
     this.onOutHandler  = onOutHandler;
-    this.options       = options;
+    this.options       = {...defaultOptions, ...options};
 
     // Keep track of XY positions in the clients' view.
     // E.g., Clicking in the top-left corner of the client area will always result

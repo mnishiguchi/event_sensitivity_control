@@ -1,5 +1,7 @@
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // State types
@@ -19,10 +21,8 @@ var eventSensitivityControl =
  * @param  onOutHandler  - a handler for mouseout event
  * @param  options
  */
-function eventSensitivityControl(element, onOverHandler, onOutHandler) {
+function eventSensitivityControl(element, onOverHandler, onOutHandler, options) {
   var _this = this;
-
-  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : defaultOptions;
 
   _classCallCheck(this, eventSensitivityControl);
 
@@ -115,7 +115,7 @@ function eventSensitivityControl(element, onOverHandler, onOutHandler) {
   this.element = element;
   this.onOverHandler = onOverHandler;
   this.onOutHandler = onOutHandler;
-  this.options = options;
+  this.options = _extends({}, defaultOptions, options);
 
   // Keep track of XY positions in the clients' view.
   // E.g., Clicking in the top-left corner of the client area will always result

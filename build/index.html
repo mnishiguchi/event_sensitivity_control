@@ -79,19 +79,28 @@
 <script>
 var element = document.querySelector('#controlled');
 
-function onOverHandler() {
-  console.log('onOverHandler was invoked')
+function onEnterHandler() {
+  console.log('onEnterHandler was invoked')
   document.querySelector('#controlled').style.backgroundColor = "#ff70ca";
 }
 
-function onOutHandler() {
-  console.log('onOutHandler was invoked')
+function onExitHandler() {
+  console.log('onExitHandler was invoked')
   document.querySelector('#controlled').style.backgroundColor = "#caff70";
 }
 
-new eventSensitivityControl(element, onOverHandler, onOutHandler);
-// eventSensitivityControl(element, onOverHandler, onOutHandler);
+var options = {
+  sensitivity: 7,   // in pixels
+  interval   : 200, // in milliseconds
+  timeout    : 400  // in milliseconds
+};
 
+var lister = new eventSensitivityControl(
+  element,
+  onEnterHandler,
+  onExitHandler,
+  options
+);
 </script>
 </body>
 </html>
