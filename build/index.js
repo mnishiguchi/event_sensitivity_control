@@ -14,17 +14,17 @@ var defaultOptions = {
   timeout: 0 // in milliseconds
 };
 
-var eventSensitivityControl =
+var EventSensitivityControl =
 /**
  * @param  element       - the target element
  * @param  onOverHandler - a handler for mouseover event
  * @param  onOutHandler  - a handler for mouseout event
  * @param  options
  */
-function eventSensitivityControl(element, onOverHandler, onOutHandler, options) {
+function EventSensitivityControl(element, onOverHandler, onOutHandler, options) {
   var _this = this;
 
-  _classCallCheck(this, eventSensitivityControl);
+  _classCallCheck(this, EventSensitivityControl);
 
   this.remove = function () {
     if (!_this.element) return;
@@ -70,10 +70,10 @@ function eventSensitivityControl(element, onOverHandler, onOutHandler, options) 
     _this.x = e.clientX;
     _this.y = e.clientY;
 
-    // Update the values on the UI.
-    document.querySelector('#x').innerHTML = _this.x;
-    document.querySelector('#y').innerHTML = _this.y;
-    document.querySelector('#timer').innerHTML = _this.timer;
+    // // Update the values on the UI.
+    // document.querySelector('#x').innerHTML = this.x;
+    // document.querySelector('#y').innerHTML = this.y;
+    // document.querySelector('#timer').innerHTML = this.timer;
   };
 
   this.delay = function (el, e) {
@@ -108,9 +108,6 @@ function eventSensitivityControl(element, onOverHandler, onOutHandler, options) 
     }
   };
 
-  console.log("constructor");
-  console.log(this.element);
-
   // Store the references to the passed-in values.
   this.element = element;
   this.onOverHandler = onOverHandler;
@@ -131,7 +128,7 @@ function eventSensitivityControl(element, onOverHandler, onOutHandler, options) 
   // The id of currently set timer. It will become undefined when the time is cancelled.
   this.timer = 0;
 
-  // Bootstraps the library.
+  // Set up listeners.
   if (this.element) {
     this.element.addEventListener('mouseover', this.dispatchEnter, false);
     this.element.addEventListener('mouseout', this.dispatchExit, false);

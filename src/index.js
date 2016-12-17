@@ -8,7 +8,7 @@ const defaultOptions = {
   timeout    : 0    // in milliseconds
 }
 
-class eventSensitivityControl {
+class EventSensitivityControl {
   /**
    * @param  element       - the target element
    * @param  onOverHandler - a handler for mouseover event
@@ -16,9 +16,6 @@ class eventSensitivityControl {
    * @param  options
    */
   constructor(element, onOverHandler, onOutHandler, options) {
-    console.log("constructor");
-    console.log(this.element);
-
     // Store the references to the passed-in values.
     this.element       = element;
     this.onOverHandler = onOverHandler;
@@ -39,7 +36,7 @@ class eventSensitivityControl {
     // The id of currently set timer. It will become undefined when the time is cancelled.
     this.timer = 0;
 
-    // Bootstraps the library.
+    // Set up listeners.
     if (this.element) {
       this.element.addEventListener('mouseover', this.dispatchEnter, false);
       this.element.addEventListener('mouseout', this.dispatchExit, false);
@@ -115,10 +112,10 @@ class eventSensitivityControl {
     this.x = e.clientX;
     this.y = e.clientY;
 
-    // Update the values on the UI.
-    document.querySelector('#x').innerHTML = this.x;
-    document.querySelector('#y').innerHTML = this.y;
-    document.querySelector('#timer').innerHTML = this.timer;
+    // // Update the values on the UI.
+    // document.querySelector('#x').innerHTML = this.x;
+    // document.querySelector('#y').innerHTML = this.y;
+    // document.querySelector('#timer').innerHTML = this.timer;
   }
 
 

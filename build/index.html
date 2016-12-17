@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Controlling the sensitivity to events
+    Controlling the sensitivity to hover events
   </title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha256-xWeRKjzyg6bep9D1AsHzUPEWHbWMzlRc84Z0aG+tyms= sha512-mGIRU0bcPaVjr7BceESkC37zD6sEccxE+RJyQABbbKNe83Y68+PyPM5nrE1zvbQZkSHDCJEtnAcodbhlq2/EkQ==" crossorigin="anonymous">
@@ -58,14 +58,14 @@
 <body>
   <main>
     <h1>
-      Controlling the sensitivity to events
+      Controlling the sensitivity to hover events
     </h1>
 
-    <div class="alert alert-info">
+    <!-- <div class="alert alert-info">
       x: <span id="x">___</span>
       y: <span id="y">___</span>
       timer: <span id="timer">___</span>
-    </div>
+    </div> -->
 
     <section
       id="controlled"
@@ -95,7 +95,7 @@ var options = {
   timeout    : 400  // in milliseconds
 };
 
-var lister = new eventSensitivityControl(
+var lister = new EventSensitivityControl(
   element,
   onEnterHandler,
   onExitHandler,

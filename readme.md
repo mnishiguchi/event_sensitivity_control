@@ -1,6 +1,7 @@
 # Event sensitivity control
 
-In this repo, I will learn how [tristen/hoverintent](https://github.com/tristen/hoverintent/blob/gh-pages/index.js) works.
+In this repo, I will learn how [tristen/hoverintent](https://github.com/tristen/hoverintent/blob/gh-pages/index.js) works, and
+write an ES6 class for the hoverintent functionalities.
 
 
 ## Demo app
@@ -11,7 +12,7 @@ Install dependencies
 npm install
 ```
 
-Compile javascript
+Compile javascript (in case you edit some js)
 
 ```
 npm run build
